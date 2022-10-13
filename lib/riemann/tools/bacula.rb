@@ -67,6 +67,9 @@ module Riemann
           parse_volumes: [
             'Volume name(s)',
           ],
+          parse_rate: [
+            'Rate',
+          ],
           parse_ratio: [
             'Software Compression',
             'Comm Line Compression',
@@ -147,6 +150,11 @@ module Riemann
 
       def parse_integer(value)
         value.gsub(',', '').to_i
+      end
+
+      def parse_rate(value)
+        %r{\A(\d+\.\d+) KB/s\z}.match(value)
+        Regexp.last_match(1).to_f
       end
 
       def parse_ratio(value)

@@ -24,7 +24,7 @@ RSpec.describe Riemann::Tools::Bacula do
       'SD Files Written'           => 1,
       'FD Bytes Written'           => 6728,
       'SD Bytes Written'           => 6852,
-      'Rate'                       => '1.7 KB/s',
+      'Rate'                       => 1.7,
       'Software Compression'       => 0.649,
       'Comm Line Compression'      => 0.0,
       'Snapshot/VSS'               => 'no',
@@ -71,7 +71,7 @@ RSpec.describe Riemann::Tools::Bacula do
       'SD Files Written'      => 13028,
       'FD Bytes Written'      => 172723413764,
       'SD Bytes Written'      => 172731259477,
-      'Rate'                  => '24615.0 KB/s',
+      'Rate'                  => 24615.0,
       'Software Compression'  => 0.168,
       'Comm Line Compression' => 0.0,
       'Snapshot/VSS'          => 'no',
@@ -238,6 +238,21 @@ RSpec.describe Riemann::Tools::Bacula do
         let(:s) { value }
 
         it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#parse_rate' do
+    subject { described_class.new.parse_rate(s) }
+
+    {
+      '1.9 KB/s'    => 1.9,
+      '2343.4 KB/s' => 2343.4,
+    }.each do |value, res|
+      context "when given #{value.inspect}" do
+        let(:s) { value }
+
+        it { is_expected.to be_within(Float::EPSILON).of(res) }
       end
     end
   end
