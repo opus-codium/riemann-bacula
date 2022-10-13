@@ -29,50 +29,90 @@ module Riemann
           key = Regexp.last_match(1)
           raw_value = Regexp.last_match(2)
 
-          value = case raw_value
-                  when /\A[\d,]+\z/ then raw_value.gsub(',', '').to_i
-                  when /\A([\d,]+) \([\d.]+ [KMG]?B\)\z/ then Regexp.last_match(1).gsub(',', '').to_i
-                  when /\A(\d+\.\d+)% \d+\.\d+:\d+\z/ then Regexp.last_match(1).to_f / 100
-                  when 'None' then 0.0
-                  when /\|/ then raw_value.split('|')
-                  else raw_value
-                  end
-
-          value = parse_duration(value) if key == 'Elapsed time'
-
-          if value =~ /\A([^ ]+) \(upgraded from (.*)\)\z/
-            value = Regexp.last_match(1)
-            data["#{key} upgraded from"] = Regexp.last_match(2)
-          end
-
-          if value =~ /\A([^ ]+), since=(.*)\z/
-            value = Regexp.last_match(1)
-            data["#{key} Since"] = Regexp.last_match(2)
-          end
-
-          if value =~ /\A"(.*)" \(From (Client|Job|Pool) resource\)\z/
-            value = Regexp.last_match(1)
-            data["#{key} Source"] = Regexp.last_match(2)
-          end
-
-          if key == 'Client'
-            value =~ /\A"([^"]+)" ([^ ]+)/
-            data['Client Version'] = Regexp.last_match(2)
-            value = Regexp.last_match(1)
-          end
-
-          if key == 'FileSet'
-            value =~ /\A"([^"]+)" (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/
-            data['FileSet time'] = Regexp.last_match(2)
-            value = Regexp.last_match(1)
-          end
-
-          data[key] = value
+          data[key] = raw_value
         end
 
-        data['Job Name'] = data['Job'].sub(/\.\d{4}-\d{2}-\d{2}_\d{2}\.\d{2}\.\d{2}_\d{2}\z/, '')
+        enhance(data)
+      end
+
+      def enhance(data)
+        [
+          'FD Bytes Written',
+          'SD Bytes Written',
+          'Last Volume Bytes',
+        ].each { |item| data[item] = parse_size(data[item]) }
+
+        [
+          'JobId',
+          'Priority',
+          'Non-fatal FD errors',
+          'FD Files Written',
+          'SD Files Written',
+          'SD Errors',
+          'Volume Session Id',
+          'Volume Session Time',
+        ].each { |item| data[item] = parse_integer(data[item]) }
+
+        [
+          'Elapsed time',
+        ].each { |item| data[item] = parse_duration(data[item]) }
+
+        [
+          'Volume name(s)',
+        ].each { |item| data[item] = parse_volumes(data[item]) }
+
+        [
+          'Software Compression',
+          'Comm Line Compression',
+        ].each { |item| data[item] = parse_ratio(data[item]) }
+
+        extract_source('Pool', data)
+        extract_source('Catalog', data)
+        extract_source('Storage', data)
+
+        extract_time('FileSet', data)
+
+        extract_client_info(data)
+        extract_backup_level_info(data)
+        extract_job_name(data)
 
         data
+      end
+
+      def extract_backup_level_info(data)
+        case data['Backup Level']
+        when /\A(Differential|Incremental), since=(.*)\z/
+          data['Backup Level'] = Regexp.last_match(1)
+          data['Backup Level Since'] = Regexp.last_match(2)
+        when /\A(Full) \(upgraded from (Differential|Incremental)\)\z/
+          data['Backup Level'] = Regexp.last_match(1)
+          data['Backup Level upgraded from'] = Regexp.last_match(2)
+        end
+      end
+
+      def extract_client_info(data)
+        /\A"([^"]+)" ([^ ]+)/.match(data['Client'])
+
+        data['Client'] = Regexp.last_match(1)
+        data['Client Version'] = Regexp.last_match(2)
+      end
+
+      def extract_job_name(data)
+        data['Job Name'] = data['Job'].sub(/\.\d{4}-\d{2}-\d{2}_\d{2}\.\d{2}\.\d{2}_\d{2}\z/, '')
+      end
+
+      def extract_source(item, data)
+        /\A"([^"]+)" \(From (Client|Job|Pool) resource\)\z/.match(data[item])
+
+        data[item] = Regexp.last_match(1)
+        data["#{item} Source"] = Regexp.last_match(2)
+      end
+
+      def extract_time(item, data)
+        /\A"([^"]+)" (.*)\z/.match(data[item])
+
+        data[item] = Regexp.last_match(1)
+        data["#{item} time"] = Regexp.last_match(2)
       end
 
       def parse_duration(duration)
@@ -92,6 +132,26 @@ module Riemann
         end
 
         res
+      end
+
+      def parse_integer(value)
+        value.gsub(',', '').to_i
+      end
+
+      def parse_ratio(value)
+        return 0.0 if value == 'None'
+
+        /\A(\d+\.\d+)% \d+\.\d+:\d+\z/.match(value)
+        Regexp.last_match(1).to_f / 100
+      end
+
+      def parse_size(value)
+        /\A([\d,]+) \([\d.]+ [KMG]?B\)\z/.match(value)
+        parse_integer(Regexp.last_match(1))
+      end
+
+      def parse_volumes(value)
+        value.split('|')
       end
 
       def send_events(data)

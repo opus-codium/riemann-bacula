@@ -30,7 +30,7 @@ RSpec.describe Riemann::Tools::Bacula do
       'Snapshot/VSS'               => 'no',
       'Encryption'                 => 'no',
       'Accurate'                   => 'no',
-      'Volume name(s)'             => 'CustomersData-7597',
+      'Volume name(s)'             => ['CustomersData-7597'],
       'Volume Session Id'          => 49,
       'Volume Session Time'        => 1663101659,
       'Last Volume Bytes'          => 236721445,
@@ -115,6 +115,96 @@ RSpec.describe Riemann::Tools::Bacula do
     end
   end
 
+  describe '#extract_backup_level_info' do
+    subject { data }
+
+    before { described_class.new.extract_backup_level_info(data) }
+
+    {
+      { 'Backup Level' => 'Full' }                                    => { 'Backup Level' => 'Full' },
+      { 'Backup Level' => 'Full (upgraded from Differential)' }       => { 'Backup Level' => 'Full', 'Backup Level upgraded from' => 'Differential' },
+      { 'Backup Level' => 'Full (upgraded from Incremental)' }        => { 'Backup Level' => 'Full', 'Backup Level upgraded from' => 'Incremental' },
+      { 'Backup Level' => 'Differential, since=2003-06-04 00:27:32' } => { 'Backup Level' => 'Differential', 'Backup Level Since' => '2003-06-04 00:27:32' },
+      { 'Backup Level' => 'Incremental, since=2020-09-30 02:11:42' }  => { 'Backup Level' => 'Incremental', 'Backup Level Since' => '2020-09-30 02:11:42' },
+    }.each do |info, res|
+      context "when given #{info.inspect}" do
+        let(:data) { info }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#extract_client_info' do
+    subject { data }
+
+    before { described_class.new.extract_client_info(data) }
+
+    {
+      { 'Client' => '"fd.example.com-fd" 9.0.6 (20Nov17) x86_64-pc-linux-gnu,ubuntu,18.04' } => { 'Client' => 'fd.example.com-fd', 'Client Version' => '9.0.6' },
+    }.each do |info, res|
+      context "when given #{info.inspect}" do
+        let(:data) { info }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#extract_job_name' do
+    subject { data }
+
+    before { described_class.new.extract_job_name(data) }
+
+    {
+      { 'Job' => 'nextcloud.2020-07-01_20.05.57_20' } => { 'Job' => 'nextcloud.2020-07-01_20.05.57_20', 'Job Name' => 'nextcloud' },
+    }.each do |info, res|
+      context "when given #{info.inspect}" do
+        let(:data) { info }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#extract_source' do
+    subject { data }
+
+    before { described_class.new.extract_source(item, data) }
+
+    let(:item) { 'Misc' }
+
+    {
+      { 'Misc' => '"foo" (From Client resource)' } => { 'Misc' => 'foo', 'Misc Source' => 'Client' },
+      { 'Misc' => '"bar" (From Job resource)' }    => { 'Misc' => 'bar', 'Misc Source' => 'Job' },
+      { 'Misc' => '"baz" (From Pool resource)' }   => { 'Misc' => 'baz', 'Misc Source' => 'Pool' },
+    }.each do |info, res|
+      context "when given #{info.inspect}" do
+        let(:data) { info }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#extract_time' do
+    subject { data }
+
+    before { described_class.new.extract_time(item, data) }
+
+    let(:item) { 'Misc' }
+
+    {
+      { 'Misc' => '"foo" 2020-07-01 02:05:00' } => { 'Misc' => 'foo', 'Misc time' => '2020-07-01 02:05:00' },
+    }.each do |info, res|
+      context "when given #{info.inspect}" do
+        let(:data) { info }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
   describe '#parse_duration' do
     subject { described_class.new.parse_duration(s) }
 
@@ -130,6 +220,70 @@ RSpec.describe Riemann::Tools::Bacula do
     }.each do |duration, res|
       context "when given #{duration.inspect}" do
         let(:s) { duration }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#parse_integer' do
+    subject { described_class.new.parse_integer(s) }
+
+    {
+      '12'         => 12,
+      '820,234'    => 820_234,
+      '1648953913' => 1_648_953_913,
+    }.each do |value, res|
+      context "when given #{value.inspect}" do
+        let(:s) { value }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
+  describe '#parse_ratio' do
+    subject { described_class.new.parse_ratio(s) }
+
+    {
+      'None'        => 0.0,
+      '61.6% 2.6:1' => 0.616,
+      '10.8% 1.1:1' => 0.108,
+    }.each do |value, res|
+      context "when given #{value.inspect}" do
+        let(:s) { value }
+
+        it { is_expected.to be_within(Float::EPSILON).of(res) }
+      end
+    end
+  end
+
+  describe '#parse_size' do
+    subject { described_class.new.parse_size(s) }
+
+    {
+      '0 (0 B)'                    => 0,
+      '24,706,874 (24.70 MB)'      => 24_706_874,
+      '821,957,854,696 (821.9 GB)' => 821_957_854_696,
+    }.each do |value, res|
+      context "when given #{value.inspect}" do
+        let(:s) { value }
+
+        it { is_expected.to be_within(Float::EPSILON).of(res) }
+      end
+    end
+  end
+
+  describe '#parse_volumes' do
+    subject { described_class.new.parse_volumes(s) }
+
+    {
+      ''                           => [],
+      'CustomersData-0111'         => %w[CustomersData-0111],
+      'Foo-0150|Foo-0151|Foo-0152' => %w[Foo-0150 Foo-0151 Foo-0152],
+    }.each do |value, res|
+      context "when given #{value.inspect}" do
+        let(:s) { value }
 
         it { is_expected.to eq(res) }
       end
