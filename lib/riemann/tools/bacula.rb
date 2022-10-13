@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'strscan'
+
 require 'riemann/tools'
 
 module Riemann
@@ -30,12 +32,13 @@ module Riemann
           value = case raw_value
                   when /\A[\d,]+\z/ then raw_value.gsub(',', '').to_i
                   when /\A([\d,]+) \([\d.]+ [KMG]?B\)\z/ then Regexp.last_match(1).gsub(',', '').to_i
-                  when /\A(?:(?:(\d+) hours? )?(\d+) mins? )?(\d+) secs\z/ then ((Regexp.last_match(1).to_i || 0) * 3600) + ((Regexp.last_match(2).to_i || 0) * 60) + Regexp.last_match(3).to_i
                   when /\A(\d+\.\d+)% \d+\.\d+:\d+\z/ then Regexp.last_match(1).to_f / 100
                   when 'None' then 0.0
                   when /\|/ then raw_value.split('|')
                   else raw_value
                   end
+
+          value = parse_duration(value) if key == 'Elapsed time'
 
           if value =~ /\A([^ ]+) \(upgraded from (.*)\)\z/
             value = Regexp.last_match(1)
@@ -70,6 +73,25 @@ module Riemann
         data['Job Name'] = data['Job'].sub(/\.\d{4}-\d{2}-\d{2}_\d{2}\.\d{2}\.\d{2}_\d{2}\z/, '')
 
         data
+      end
+
+      def parse_duration(duration)
+        s = StringScanner.new(duration)
+        res = 0
+
+        until s.eos?
+          case
+          when s.scan(/\s+/)
+            # ignore spaces
+          when s.scan(/(\d+) hours?/) then res += s[0].to_i * 3600
+          when s.scan(/(\d+) mins?/)  then res += s[0].to_i * 60
+          when s.scan(/(\d+) secs?/)  then res += s[0].to_i
+          else
+            return -1
+          end
+        end
+
+        res
       end
 
       def send_events(data)

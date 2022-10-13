@@ -115,6 +115,27 @@ RSpec.describe Riemann::Tools::Bacula do
     end
   end
 
+  describe '#parse_duration' do
+    subject { described_class.new.parse_duration(s) }
+
+    {
+      '1 sec'                    => 1,
+      '8 secs'                   => 8,
+      '36 secs'                  => 36,
+      '3 mins 9 secs'            => 189,
+      '1 hour 10 secs'           => 3610,
+      '1 hour 12 mins 56 secs'   => 4376,
+      '13 hours 35 mins 48 secs' => 48948,
+      'not a duration'           => -1,
+    }.each do |duration, res|
+      context "when given #{duration.inspect}" do
+        let(:s) { duration }
+
+        it { is_expected.to eq(res) }
+      end
+    end
+  end
+
   describe '#send_events' do
     subject(:instance) { described_class.new }
 
