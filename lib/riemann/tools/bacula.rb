@@ -15,7 +15,7 @@ module Riemann
 
       def process_stdin
         data = parse($stdin.read)
-        send_events(data)
+        send_events(data) if data
       end
 
       def parse(text)
@@ -32,39 +32,50 @@ module Riemann
           data[key] = raw_value
         end
 
+        return nil unless valid?(data)
+
         enhance(data)
       end
 
+      def valid?(data)
+        %w[
+          Job
+          Termination
+        ].all? { |key| data.key?(key) }
+      end
+
       def enhance(data)
-        [
-          'FD Bytes Written',
-          'SD Bytes Written',
-          'Last Volume Bytes',
-        ].each { |item| data[item] = parse_size(data[item]) }
-
-        [
-          'JobId',
-          'Priority',
-          'Non-fatal FD errors',
-          'FD Files Written',
-          'SD Files Written',
-          'SD Errors',
-          'Volume Session Id',
-          'Volume Session Time',
-        ].each { |item| data[item] = parse_integer(data[item]) }
-
-        [
-          'Elapsed time',
-        ].each { |item| data[item] = parse_duration(data[item]) }
-
-        [
-          'Volume name(s)',
-        ].each { |item| data[item] = parse_volumes(data[item]) }
-
-        [
-          'Software Compression',
-          'Comm Line Compression',
-        ].each { |item| data[item] = parse_ratio(data[item]) }
+        {
+          parse_size: [
+            'FD Bytes Written',
+            'SD Bytes Written',
+            'Last Volume Bytes',
+          ],
+          parse_integer: [
+            'JobId',
+            'Priority',
+            'Non-fatal FD errors',
+            'FD Files Written',
+            'SD Files Written',
+            'SD Errors',
+            'Volume Session Id',
+            'Volume Session Time',
+          ],
+          parse_duration: [
+            'Elapsed time',
+          ],
+          parse_volumes: [
+            'Volume name(s)',
+          ],
+          parse_ratio: [
+            'Software Compression',
+            'Comm Line Compression',
+          ],
+        }.each do |parser, keys|
+          keys.each do |key|
+            data[key] = send(parser, data[key]) if data[key]
+          end
+        end
 
         extract_source('Pool', data)
         extract_source('Catalog', data)
