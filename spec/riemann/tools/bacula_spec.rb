@@ -313,11 +313,17 @@ RSpec.describe Riemann::Tools::Bacula do
       instance.send_events(example1_data)
     end
 
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a Full fd files written', metric: 1.0, tags: ['bacula']) }
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a Full sd files written', metric: 1.0, tags: ['bacula']) }
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a Full fd bytes written', metric: 6728.0, tags: ['bacula']) }
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a Full sd bytes written', metric: 6852.0, tags: ['bacula']) }
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a Full sd errors', metric: 0.0, tags: ['bacula']) }
-    it { is_expected.to have_received(:report).with(service: 'backup rdc10235a termination', state: 'ok', description: 'Backup OK', tags: ['bacula']) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a', state: 'ok', description: 'Backup OK') }
+
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full elapsed time', metric: 4) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full fd files written', metric: 1) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd files written', metric: 1) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full fd bytes written', metric: 6728) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd bytes written', metric: 6852) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd errors', metric: 0) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full rate', metric: 1.7) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full software compression', metric: 0.649) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full comm line compression', metric: 0) }
+    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full non-fatal fd errors', metric: 0) }
   end
 end

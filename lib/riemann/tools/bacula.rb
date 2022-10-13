@@ -9,11 +9,14 @@ module Riemann
     class Bacula
       include Riemann::Tools
 
+      opt :details, 'Send detailed metrics beyond overall status', default: true
+
       def self.process_stdin
         new.process_stdin
       end
 
       def run
+        options
         data = parse($stdin.read)
         send_events(data) if data
       end
@@ -175,23 +178,7 @@ module Riemann
 
       def send_events(data)
         event = {}
-
-        [
-          'FD Files Written',
-          'SD Files Written',
-          'FD Bytes Written',
-          'SD Bytes Written',
-          'SD Errors',
-        ].each do |event_name|
-          event = {}
-          event[:service] = "backup #{data['Job Name']} #{data['Backup Level']} #{event_name.downcase}"
-          event[:metric] = data[event_name].to_f
-          event[:tags] = ['bacula']
-          report(event)
-        end
-
-        event = {}
-        event[:service] = "backup #{data['Job Name']} termination"
+        event[:service] = "bacula backup #{data['Job Name']}"
         event[:state] = case data['Termination']
                         when 'Backup OK' then 'ok'
                         when 'Backup OK -- with warnings' then 'warning'
@@ -199,9 +186,27 @@ module Riemann
                           'critical'
                         end
         event[:description] = data['Termination']
-        event[:tags] = ['bacula']
-
         report(event)
+
+        return unless options[:details]
+
+        [
+          'Elapsed time',
+          'FD Files Written',
+          'SD Files Written',
+          'FD Bytes Written',
+          'SD Bytes Written',
+          'SD Errors',
+          'Rate',
+          'Software Compression',
+          'Comm Line Compression',
+          'Non-fatal FD errors',
+        ].each do |metric|
+          event = {}
+          event[:service] = "bacula backup #{data['Job Name']} #{data['Backup Level'].downcase} #{metric.downcase}"
+          event[:metric] = data[metric]
+          report(event)
+        end
       end
     end
   end
