@@ -50,6 +50,53 @@ RSpec.describe Riemann::Tools::Bacula do
     }
   end
 
+  let(:example2_data) do
+    {
+      'Build OS'              => 'x86_64-pc-linux-gnu debian bullseye/sid',
+      'JobId'                 => 3257,
+      'Job'                   => 'nextcloud.2022-10-07_20.00.00_22',
+      'Backup Level'          => 'Differential',
+      'Backup Level Since'    => '2022-09-02 20:00:16',
+      'Client'                => 'rdcc295d9.example.com-fd',
+      'FileSet'               => 'nextcloud',
+      'Pool'                  => 'Redacted',
+      'Catalog'               => 'MyCatalog',
+      'Storage'               => 'rdc593ce8.example.com-sd',
+      'Scheduled time'        => '07-Oct-2022 20:00:00',
+      'Start time'            => '07-Oct-2022 20:00:15',
+      'End time'              => '07-Oct-2022 21:57:12',
+      'Elapsed time'          => 7017,
+      'Priority'              => 10,
+      'FD Files Written'      => 13028,
+      'SD Files Written'      => 13028,
+      'FD Bytes Written'      => 172723413764,
+      'SD Bytes Written'      => 172731259477,
+      'Rate'                  => '24615.0 KB/s',
+      'Software Compression'  => 0.168,
+      'Comm Line Compression' => 0.0,
+      'Snapshot/VSS'          => 'no',
+      'Encryption'            => 'yes',
+      'Accurate'              => 'no',
+      'Volume name(s)'        => %w[Redacted-0964 Redacted-0965 Redacted-0966 Redacted-0967 Redacted-0968 Redacted-0969 Redacted-0970 Redacted-0971 Redacted-0972 Redacted-0973 Redacted-0974 Redacted-0975 Redacted-0976 Redacted-0977 Redacted-0978 Redacted-0979 Redacted-0980 Redacted-0981 Redacted-0982 Redacted-0983 Redacted-0984 Redacted-0985 Redacted-0986 Redacted-0987 Redacted-0988 Redacted-0989 Redacted-0990 Redacted-0991 Redacted-0992 Redacted-0993 Redacted-0994 Redacted-0995 Redacted-0996],
+      'Volume Session Id'     => 78,
+      'Volume Session Time'   => 1661814544,
+      'Last Volume Bytes'     => 3273053149,
+      'Non-fatal FD errors'   => 0,
+      'SD Errors'             => 0,
+      'FD termination status' => 'OK',
+      'SD termination status' => 'OK',
+      'Termination'           => 'Backup OK',
+
+      # Supplements
+      'Pool Source'           => 'Job',
+      'Catalog Source'        => 'Client',
+      'Storage Source'        => 'Pool',
+      'Client Version'        => '9.6.7',
+      'FileSet time'          => '2019-07-27 20:00:00',
+      'Job Name'              => 'nextcloud',
+    }
+  end
+
   describe '#parse' do
     context 'with example-1' do
       subject { described_class.new.parse(text) }
@@ -57,6 +104,14 @@ RSpec.describe Riemann::Tools::Bacula do
       let(:text) { File.read('spec/fixtures/example-1') }
 
       it { is_expected.to include(example1_data) }
+    end
+
+    context 'with example-2' do
+      subject { described_class.new.parse(text) }
+
+      let(:text) { File.read('spec/fixtures/example-2') }
+
+      it { is_expected.to include(example2_data) }
     end
   end
 

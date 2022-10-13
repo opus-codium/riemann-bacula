@@ -1,0 +1,245 @@
+2022-10-07 20:00:02rdc593ce8.example.com-dir JobId 3257: Start Backup JobId 3257, Job=nextcloud.2022-10-07_20.00.00_22
+2022-10-07 20:00:02rdc593ce8.example.com-dir JobId 3257: Using Device "rdc593ce8.example.com-device" to write.
+2022-10-07 20:00:02rdcc295d9.example.com-fd JobId 3257: shell command: run ClientBeforeJob "REDACTED"
+2022-10-07 20:00:03rdcc295d9.example.com-fd JobId 3257: ClientBeforeJob: Maintenance mode enabled
+2022-10-07 20:00:03rdcc295d9.example.com-fd JobId 3257: shell command: run ClientBeforeJob "REDACTED"
+2022-10-07 20:00:15rdc593ce8.example.com-sd JobId 3257: Volume "Redacted-0964" previously written, moving to end of data.
+2022-10-07 20:00:15rdc593ce8.example.com-sd JobId 3257: Ready to append to end of Volume "Redacted-0964" size=2,204,695,126
+2022-10-07 20:02:18rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0964" Bytes=5,368,686,086 Blocks=83,221 at 07-Oct-2022 20:02.
+2022-10-07 20:02:18rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0965". Marking it purged.
+2022-10-07 20:02:18rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0965"; marking it "Purged"
+2022-10-07 20:02:18rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0965"
+2022-10-07 20:02:19rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0965" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:02:19rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0965" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:02.
+2022-10-07 20:05:57rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0965" Bytes=5,368,688,800 Blocks=83,220 at 07-Oct-2022 20:05.
+2022-10-07 20:05:57rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0966". Marking it purged.
+2022-10-07 20:05:57rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0966"; marking it "Purged"
+2022-10-07 20:05:57rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0966"
+2022-10-07 20:05:58rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0966" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:05:58rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0966" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:05.
+2022-10-07 20:09:30rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0966" Bytes=5,368,688,787 Blocks=83,220 at 07-Oct-2022 20:09.
+2022-10-07 20:09:30rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0967". Marking it purged.
+2022-10-07 20:09:30rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0967"; marking it "Purged"
+2022-10-07 20:09:30rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0967"
+2022-10-07 20:09:30rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0967" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:09:31rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0967" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:09.
+2022-10-07 20:13:15rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0967" Bytes=5,368,688,808 Blocks=83,220 at 07-Oct-2022 20:13.
+2022-10-07 20:13:15rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0968". Marking it purged.
+2022-10-07 20:13:15rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0968"; marking it "Purged"
+2022-10-07 20:13:15rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0968"
+2022-10-07 20:13:15rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0968" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:13:15rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0968" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:13.
+2022-10-07 20:16:26rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0968" Bytes=5,368,688,783 Blocks=83,220 at 07-Oct-2022 20:16.
+2022-10-07 20:16:26rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0969". Marking it purged.
+2022-10-07 20:16:26rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0969"; marking it "Purged"
+2022-10-07 20:16:26rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0969"
+2022-10-07 20:16:26rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0969" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:16:26rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0969" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:16.
+2022-10-07 20:20:10rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0969" Bytes=5,368,688,809 Blocks=83,220 at 07-Oct-2022 20:20.
+2022-10-07 20:20:10rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0970". Marking it purged.
+2022-10-07 20:20:10rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0970"; marking it "Purged"
+2022-10-07 20:20:10rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0970"
+2022-10-07 20:20:10rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0970" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:20:10rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0970" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:20.
+2022-10-07 20:23:48rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0970" Bytes=5,368,688,772 Blocks=83,220 at 07-Oct-2022 20:23.
+2022-10-07 20:23:48rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0971". Marking it purged.
+2022-10-07 20:23:48rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0971"; marking it "Purged"
+2022-10-07 20:23:48rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0971"
+2022-10-07 20:23:49rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0971" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:23:49rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0971" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:23.
+2022-10-07 20:27:25rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0971" Bytes=5,368,688,847 Blocks=83,220 at 07-Oct-2022 20:27.
+2022-10-07 20:27:25rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0972". Marking it purged.
+2022-10-07 20:27:25rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0972"; marking it "Purged"
+2022-10-07 20:27:25rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0972"
+2022-10-07 20:27:25rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0972" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:27:25rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0972" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:27.
+2022-10-07 20:31:11rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0972" Bytes=5,368,688,831 Blocks=83,220 at 07-Oct-2022 20:31.
+2022-10-07 20:31:11rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0973". Marking it purged.
+2022-10-07 20:31:11rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0973"; marking it "Purged"
+2022-10-07 20:31:11rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0973"
+2022-10-07 20:31:11rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0973" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:31:12rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0973" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:31.
+2022-10-07 20:35:29rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0973" Bytes=5,368,688,787 Blocks=83,220 at 07-Oct-2022 20:35.
+2022-10-07 20:35:29rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0974". Marking it purged.
+2022-10-07 20:35:29rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0974"; marking it "Purged"
+2022-10-07 20:35:29rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0974"
+2022-10-07 20:35:29rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0974" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:35:29rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0974" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:35.
+2022-10-07 20:39:08rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0974" Bytes=5,368,688,844 Blocks=83,220 at 07-Oct-2022 20:39.
+2022-10-07 20:39:08rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0975". Marking it purged.
+2022-10-07 20:39:08rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0975"; marking it "Purged"
+2022-10-07 20:39:08rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0975"
+2022-10-07 20:39:08rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0975" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:39:08rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0975" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:39.
+2022-10-07 20:42:36rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0975" Bytes=5,368,688,794 Blocks=83,220 at 07-Oct-2022 20:42.
+2022-10-07 20:42:36rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0976". Marking it purged.
+2022-10-07 20:42:36rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0976"; marking it "Purged"
+2022-10-07 20:42:36rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0976"
+2022-10-07 20:42:37rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0976" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:42:37rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0976" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:42.
+2022-10-07 20:46:12rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0976" Bytes=5,368,688,849 Blocks=83,220 at 07-Oct-2022 20:46.
+2022-10-07 20:46:12rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0977". Marking it purged.
+2022-10-07 20:46:12rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0977"; marking it "Purged"
+2022-10-07 20:46:12rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0977"
+2022-10-07 20:46:12rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0977" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:46:12rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0977" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:46.
+2022-10-07 20:49:42rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0977" Bytes=5,368,688,829 Blocks=83,220 at 07-Oct-2022 20:49.
+2022-10-07 20:49:42rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0978". Marking it purged.
+2022-10-07 20:49:42rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0978"; marking it "Purged"
+2022-10-07 20:49:42rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0978"
+2022-10-07 20:49:43rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0978" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:49:43rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0978" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:49.
+2022-10-07 20:53:17rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0978" Bytes=5,368,688,825 Blocks=83,220 at 07-Oct-2022 20:53.
+2022-10-07 20:53:17rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0979". Marking it purged.
+2022-10-07 20:53:17rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0979"; marking it "Purged"
+2022-10-07 20:53:17rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0979"
+2022-10-07 20:53:17rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0979" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:53:17rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0979" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:53.
+2022-10-07 20:56:49rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0979" Bytes=5,368,688,825 Blocks=83,220 at 07-Oct-2022 20:56.
+2022-10-07 20:56:49rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0980". Marking it purged.
+2022-10-07 20:56:49rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0980"; marking it "Purged"
+2022-10-07 20:56:49rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0980"
+2022-10-07 20:56:49rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0980" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 20:56:49rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0980" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 20:56.
+2022-10-07 21:00:21rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0980" Bytes=5,368,688,805 Blocks=83,220 at 07-Oct-2022 21:00.
+2022-10-07 21:00:21rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0981". Marking it purged.
+2022-10-07 21:00:21rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0981"; marking it "Purged"
+2022-10-07 21:00:21rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0981"
+2022-10-07 21:00:21rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0981" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:00:21rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0981" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:00.
+2022-10-07 21:03:52rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0981" Bytes=5,368,688,799 Blocks=83,220 at 07-Oct-2022 21:03.
+2022-10-07 21:03:52rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0982". Marking it purged.
+2022-10-07 21:03:52rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0982"; marking it "Purged"
+2022-10-07 21:03:52rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0982"
+2022-10-07 21:03:52rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0982" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:03:52rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0982" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:03.
+2022-10-07 21:07:26rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0982" Bytes=5,368,688,813 Blocks=83,220 at 07-Oct-2022 21:07.
+2022-10-07 21:07:26rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0983". Marking it purged.
+2022-10-07 21:07:26rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0983"; marking it "Purged"
+2022-10-07 21:07:26rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0983"
+2022-10-07 21:07:26rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0983" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:07:26rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0983" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:07.
+2022-10-07 21:10:59rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0983" Bytes=5,368,688,841 Blocks=83,220 at 07-Oct-2022 21:10.
+2022-10-07 21:10:59rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0984". Marking it purged.
+2022-10-07 21:10:59rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0984"; marking it "Purged"
+2022-10-07 21:10:59rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0984"
+2022-10-07 21:10:59rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0984" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:10:59rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0984" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:10.
+2022-10-07 21:14:30rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0984" Bytes=5,368,688,821 Blocks=83,220 at 07-Oct-2022 21:14.
+2022-10-07 21:14:30rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0985". Marking it purged.
+2022-10-07 21:14:30rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0985"; marking it "Purged"
+2022-10-07 21:14:30rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0985"
+2022-10-07 21:14:30rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0985" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:14:30rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0985" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:14.
+2022-10-07 21:17:57rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0985" Bytes=5,368,688,809 Blocks=83,220 at 07-Oct-2022 21:17.
+2022-10-07 21:17:57rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0986". Marking it purged.
+2022-10-07 21:17:57rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0986"; marking it "Purged"
+2022-10-07 21:17:57rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0986"
+2022-10-07 21:17:58rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0986" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:17:58rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0986" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:17.
+2022-10-07 21:21:29rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0986" Bytes=5,368,688,765 Blocks=83,220 at 07-Oct-2022 21:21.
+2022-10-07 21:21:29rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0987". Marking it purged.
+2022-10-07 21:21:29rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0987"; marking it "Purged"
+2022-10-07 21:21:29rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0987"
+2022-10-07 21:21:29rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0987" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:21:29rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0987" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:21.
+2022-10-07 21:24:56rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0987" Bytes=5,368,688,807 Blocks=83,220 at 07-Oct-2022 21:24.
+2022-10-07 21:24:56rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0988". Marking it purged.
+2022-10-07 21:24:56rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0988"; marking it "Purged"
+2022-10-07 21:24:56rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0988"
+2022-10-07 21:24:56rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0988" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:24:56rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0988" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:24.
+2022-10-07 21:28:23rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0988" Bytes=5,368,688,817 Blocks=83,220 at 07-Oct-2022 21:28.
+2022-10-07 21:28:23rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0989". Marking it purged.
+2022-10-07 21:28:23rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0989"; marking it "Purged"
+2022-10-07 21:28:23rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0989"
+2022-10-07 21:28:23rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0989" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:28:23rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0989" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:28.
+2022-10-07 21:31:49rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0989" Bytes=5,368,688,793 Blocks=83,220 at 07-Oct-2022 21:31.
+2022-10-07 21:31:49rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0990". Marking it purged.
+2022-10-07 21:31:49rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0990"; marking it "Purged"
+2022-10-07 21:31:49rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0990"
+2022-10-07 21:31:50rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0990" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:31:50rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0990" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:31.
+2022-10-07 21:35:18rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0990" Bytes=5,368,688,809 Blocks=83,220 at 07-Oct-2022 21:35.
+2022-10-07 21:35:18rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0991". Marking it purged.
+2022-10-07 21:35:18rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0991"; marking it "Purged"
+2022-10-07 21:35:18rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0991"
+2022-10-07 21:35:18rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0991" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:35:18rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0991" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:35.
+2022-10-07 21:38:46rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0991" Bytes=5,368,688,801 Blocks=83,220 at 07-Oct-2022 21:38.
+2022-10-07 21:38:46rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0992". Marking it purged.
+2022-10-07 21:38:46rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0992"; marking it "Purged"
+2022-10-07 21:38:46rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0992"
+2022-10-07 21:38:46rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0992" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:38:46rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0992" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:38.
+2022-10-07 21:42:17rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0992" Bytes=5,368,688,823 Blocks=83,220 at 07-Oct-2022 21:42.
+2022-10-07 21:42:17rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0993". Marking it purged.
+2022-10-07 21:42:17rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0993"; marking it "Purged"
+2022-10-07 21:42:17rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0993"
+2022-10-07 21:42:17rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0993" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:42:17rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0993" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:42.
+2022-10-07 21:45:47rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0993" Bytes=5,368,688,853 Blocks=83,220 at 07-Oct-2022 21:45.
+2022-10-07 21:45:47rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0994". Marking it purged.
+2022-10-07 21:45:47rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0994"; marking it "Purged"
+2022-10-07 21:45:47rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0994"
+2022-10-07 21:45:47rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0994" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:45:47rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0994" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:45.
+2022-10-07 21:49:51rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0994" Bytes=5,368,688,826 Blocks=83,220 at 07-Oct-2022 21:49.
+2022-10-07 21:49:52rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0995". Marking it purged.
+2022-10-07 21:49:52rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0995"; marking it "Purged"
+2022-10-07 21:49:52rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0995"
+2022-10-07 21:49:52rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0995" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:49:52rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0995" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:49.
+2022-10-07 21:54:14rdc593ce8.example.com-sd JobId 3257: End of medium on Volume "Redacted-0995" Bytes=5,368,688,814 Blocks=83,220 at 07-Oct-2022 21:54.
+2022-10-07 21:54:14rdc593ce8.example.com-dir JobId 3257: There are no more Jobs associated with Volume "Redacted-0996". Marking it purged.
+2022-10-07 21:54:14rdc593ce8.example.com-dir JobId 3257: All records pruned from Volume "Redacted-0996"; marking it "Purged"
+2022-10-07 21:54:14rdc593ce8.example.com-dir JobId 3257: Recycled volume "Redacted-0996"
+2022-10-07 21:54:14rdc593ce8.example.com-sd JobId 3257: Recycled volume "Redacted-0996" on File device "rdc593ce8.example.com-device" (/tank/bacula), all previous data lost.
+2022-10-07 21:54:14rdc593ce8.example.com-sd JobId 3257: New volume "Redacted-0996" mounted on device "rdc593ce8.example.com-device" (/tank/bacula) at 07-Oct-2022 21:54.
+2022-10-07 21:57:10rdcc295d9.example.com-fd JobId 3257: shell command: run ClientAfterJob "redacted"
+2022-10-07 21:57:10rdc593ce8.example.com-sd JobId 3257: Elapsed time=01:56:45, Transfer rate=24.65 M Bytes/second
+2022-10-07 21:57:10rdc593ce8.example.com-sd JobId 3257: Sending spooled attrs to the Director. Despooling 3,963,392 bytes ...
+2022-10-07 21:57:11rdcc295d9.example.com-fd JobId 3257: ClientAfterJob: Maintenance mode disabled
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: Bacula rdc593ce8.example.com-dir 9.6.7 (10Dec20):
+  Build OS:               x86_64-pc-linux-gnu debian bullseye/sid
+  JobId:                  3257
+  Job:                    nextcloud.2022-10-07_20.00.00_22
+  Backup Level:           Differential, since=2022-09-02 20:00:16
+  Client:                 "rdcc295d9.example.com-fd" 9.6.7 (10Dec20) x86_64-pc-linux-gnu,debian,bullseye/sid
+  FileSet:                "nextcloud" 2019-07-27 20:00:00
+  Pool:                   "Redacted" (From Job resource)
+  Catalog:                "MyCatalog" (From Client resource)
+  Storage:                "rdc593ce8.example.com-sd" (From Pool resource)
+  Scheduled time:         07-Oct-2022 20:00:00
+  Start time:             07-Oct-2022 20:00:15
+  End time:               07-Oct-2022 21:57:12
+  Elapsed time:           1 hour 56 mins 57 secs
+  Priority:               10
+  FD Files Written:       13,028
+  SD Files Written:       13,028
+  FD Bytes Written:       172,723,413,764 (172.7 GB)
+  SD Bytes Written:       172,731,259,477 (172.7 GB)
+  Rate:                   24615.0 KB/s
+  Software Compression:   16.8% 1.2:1
+  Comm Line Compression:  None
+  Snapshot/VSS:           no
+  Encryption:             yes
+  Accurate:               no
+  Volume name(s):         Redacted-0964|Redacted-0965|Redacted-0966|Redacted-0967|Redacted-0968|Redacted-0969|Redacted-0970|Redacted-0971|Redacted-0972|Redacted-0973|Redacted-0974|Redacted-0975|Redacted-0976|Redacted-0977|Redacted-0978|Redacted-0979|Redacted-0980|Redacted-0981|Redacted-0982|Redacted-0983|Redacted-0984|Redacted-0985|Redacted-0986|Redacted-0987|Redacted-0988|Redacted-0989|Redacted-0990|Redacted-0991|Redacted-0992|Redacted-0993|Redacted-0994|Redacted-0995|Redacted-0996
+  Volume Session Id:      78
+  Volume Session Time:    1661814544
+  Last Volume Bytes:      3,273,053,149 (3.273 GB)
+  Non-fatal FD errors:    0
+  SD Errors:              0
+  FD termination status:  OK
+  SD termination status:  OK
+  Termination:            Backup OK
+
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: Begin pruning Jobs older than 6 months .
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: Pruned 1 Job for client rdcc295d9.example.com-fd from catalog.
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: Begin pruning Files.
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: Pruned Files from 1 Jobs for client rdcc295d9.example.com-fd from catalog.
+2022-10-07 21:57:12rdc593ce8.example.com-dir JobId 3257: End auto prune.
+
+

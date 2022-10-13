@@ -30,7 +30,7 @@ module Riemann
           value = case raw_value
                   when /\A[\d,]+\z/ then raw_value.gsub(',', '').to_i
                   when /\A([\d,]+) \([\d.]+ [KMG]?B\)\z/ then Regexp.last_match(1).gsub(',', '').to_i
-                  when /\A(?:(\d+ mins ))?(\d+) secs\z/ then ((Regexp.last_match(1).to_i || 0) * 60) + Regexp.last_match(2).to_i
+                  when /\A(?:(?:(\d+) hours? )?(\d+) mins? )?(\d+) secs\z/ then ((Regexp.last_match(1).to_i || 0) * 3600) + ((Regexp.last_match(2).to_i || 0) * 60) + Regexp.last_match(3).to_i
                   when /\A(\d+\.\d+)% \d+\.\d+:\d+\z/ then Regexp.last_match(1).to_f / 100
                   when 'None' then 0.0
                   when /\|/ then raw_value.split('|')
@@ -40,6 +40,11 @@ module Riemann
           if value =~ /\A([^ ]+) \(upgraded from (.*)\)\z/
             value = Regexp.last_match(1)
             data["#{key} upgraded from"] = Regexp.last_match(2)
+          end
+
+          if value =~ /\A([^ ]+), since=(.*)\z/
+            value = Regexp.last_match(1)
+            data["#{key} Since"] = Regexp.last_match(2)
           end
 
           if value =~ /\A"(.*)" \(From (Client|Job|Pool) resource\)\z/
