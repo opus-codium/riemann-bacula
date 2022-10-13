@@ -37,6 +37,11 @@ module Riemann
                   else raw_value
                   end
 
+          if value =~ /\A([^ ]+) \(upgraded from (.*)\)\z/
+            value = Regexp.last_match(1)
+            data["#{key} upgraded from"] = Regexp.last_match(2)
+          end
+
           if value =~ /\A"(.*)" \(From (Client|Job|Pool) resource\)\z/
             value = Regexp.last_match(1)
             data["#{key} Source"] = Regexp.last_match(2)
