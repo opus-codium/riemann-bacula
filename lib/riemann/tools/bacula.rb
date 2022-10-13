@@ -13,7 +13,7 @@ module Riemann
         new.process_stdin
       end
 
-      def process_stdin
+      def run
         data = parse($stdin.read)
         send_events(data) if data
       end
