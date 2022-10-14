@@ -1,0 +1,32 @@
+2020-09-01 19:46:43rdcfb2bd7.example.com-dir JobId 4220: Start Restore Job RestoreFiles.2020-09-01_19.46.41_50
+2020-09-01 19:46:43rdcfb2bd7.example.com-dir JobId 4220: Using Device "rdcfb2bd7.example.com-device" to read.
+2020-09-01 19:46:43rdcfb2bd7.example.com-sd JobId 4220: Ready to read from volume "CustomersData-0107" on File device "rdcfb2bd7.example.com-device" (/home/bacula).
+2020-09-01 19:46:43rdcfb2bd7.example.com-sd JobId 4220: Forward spacing Volume "CustomersData-0107" to addr=3441370754
+2020-09-01 19:47:04rdcfb2bd7.example.com-sd JobId 4220: End of Volume "CustomersData-0107" at addr=3692171858 on device "rdcfb2bd7.example.com-device" (/home/bacula).
+2020-09-01 19:47:04rdcfb2bd7.example.com-sd JobId 4220: Ready to read from volume "CustomersData-0110" on File device "rdcfb2bd7.example.com-device" (/home/bacula).
+2020-09-01 19:47:04rdcfb2bd7.example.com-sd JobId 4220: Forward spacing Volume "CustomersData-0110" to addr=644430030
+2020-09-01 19:47:04rdcfb2bd7.example.com-sd JobId 4220: Elapsed time=00:00:21, Transfer rate=12.05 M Bytes/second
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: Bacula rdcfb2bd7.example.com-dir 9.4.2 (04Feb19):
+  Build OS:               x86_64-pc-linux-gnu debian buster/sid
+  JobId:                  4220
+  Job:                    RestoreFiles.2020-09-01_19.46.41_50
+  Restore Client:         rdc085e07.example.com-fd
+  Where:                  /tmp/bacula-restores
+  Replace:                Always
+  Start time:             01-Sep-2020 19:46:43
+  End time:               01-Sep-2020 19:47:05
+  Elapsed time:           22 secs
+  Files Expected:         7,854
+  Files Restored:         7,854
+  Bytes Restored:         342,147,491 (342.1 MB)
+  Rate:                   15552.2 KB/s
+  FD Errors:              0
+  FD termination status:  OK
+  SD termination status:  OK
+  Termination:            Restore OK
+
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: Begin pruning Jobs older than 6 months .
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: No Jobs found to prune.
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: Begin pruning Files.
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: No Files found to prune.
+2020-09-01 19:47:05rdcfb2bd7.example.com-dir JobId 4220: End auto prune.

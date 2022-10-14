@@ -97,13 +97,36 @@ RSpec.describe Riemann::Tools::Bacula do
     }
   end
 
+  let(:example3_data) do
+    {
+      'Build OS'              => 'x86_64-pc-linux-gnu debian buster/sid',
+      'JobId'                 => 4220,
+      'Job'                   => 'RestoreFiles.2020-09-01_19.46.41_50',
+      'Job Name'              => 'RestoreFiles',
+      'Restore Client'        => 'rdc085e07.example.com-fd',
+      'Where'                 => '/tmp/bacula-restores',
+      'Replace'               => 'Always',
+      'Start time'            => '01-Sep-2020 19:46:43',
+      'End time'              => '01-Sep-2020 19:47:05',
+      'Elapsed time'          => 22,
+      'Files Expected'        => 7854,
+      'Files Restored'        => 7854,
+      'Bytes Restored'        => 342_147_491,
+      'Rate'                  => 15552.2,
+      'FD Errors'             => 0,
+      'FD termination status' => 'OK',
+      'SD termination status' => 'OK',
+      'Termination'           => 'Restore OK',
+    }
+  end
+
   describe '#parse' do
     context 'with example-1' do
       subject { described_class.new.parse(text) }
 
       let(:text) { File.read('spec/fixtures/example-1') }
 
-      it { is_expected.to include(example1_data) }
+      it { is_expected.to eq(example1_data) }
     end
 
     context 'with example-2' do
@@ -111,7 +134,15 @@ RSpec.describe Riemann::Tools::Bacula do
 
       let(:text) { File.read('spec/fixtures/example-2') }
 
-      it { is_expected.to include(example2_data) }
+      it { is_expected.to eq(example2_data) }
+    end
+
+    context 'with example-3' do
+      subject { described_class.new.parse(text) }
+
+      let(:text) { File.read('spec/fixtures/example-3') }
+
+      it { is_expected.to eq(example3_data) }
     end
   end
 
