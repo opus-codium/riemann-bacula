@@ -53,16 +53,20 @@ module Riemann
             'FD Bytes Written',
             'SD Bytes Written',
             'Last Volume Bytes',
+            'Bytes Restored',
           ],
           parse_integer: [
             'JobId',
             'Priority',
             'Non-fatal FD errors',
             'FD Files Written',
+            'FD Errors',
             'SD Files Written',
             'SD Errors',
             'Volume Session Id',
             'Volume Session Time',
+            'Files Expected',
+            'Files Restored',
           ],
           parse_duration: [
             'Elapsed time',
@@ -108,7 +112,7 @@ module Riemann
       end
 
       def extract_client_info(data)
-        /\A"([^"]+)" ([^ ]+)/.match(data['Client'])
+        return unless /\A"([^"]+)" ([^ ]+)/.match(data['Client'])
 
         data['Client'] = Regexp.last_match(1)
         data['Client Version'] = Regexp.last_match(2)
@@ -119,14 +123,14 @@ module Riemann
       end
 
       def extract_source(item, data)
-        /\A"([^"]+)" \(From (Client|Job|Pool) resource\)\z/.match(data[item])
+        return unless /\A"([^"]+)" \(From (Client|Job|Pool) resource\)\z/.match(data[item])
 
         data[item] = Regexp.last_match(1)
         data["#{item} Source"] = Regexp.last_match(2)
       end
 
       def extract_time(item, data)
-        /\A"([^"]+)" (.*)\z/.match(data[item])
+        return unless /\A"([^"]+)" (.*)\z/.match(data[item])
 
         data[item] = Regexp.last_match(1)
         data["#{item} time"] = Regexp.last_match(2)
@@ -180,7 +184,7 @@ module Riemann
         event = {}
         event[:service] = "bacula backup #{data['Job Name']}"
         event[:state] = case data['Termination']
-                        when 'Backup OK' then 'ok'
+                        when /\A(Backup|Restore) OK\z/ then 'ok'
                         when 'Backup OK -- with warnings' then 'warning'
                         else
                           'critical'
