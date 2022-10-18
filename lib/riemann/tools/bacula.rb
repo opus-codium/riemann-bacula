@@ -172,7 +172,8 @@ module Riemann
       end
 
       def parse_size(value)
-        /\A([\d,]+) \([\d.]+ [KMG]?B\)\z/.match(value)
+        raise ArgumentError, %(Cannot parse size "#{value}") unless /\A([\d,]+) \([\d.]+ [KMGT]?B\)\z/.match(value)
+
         parse_integer(Regexp.last_match(1))
       end
 
