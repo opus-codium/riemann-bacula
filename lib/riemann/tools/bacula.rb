@@ -23,16 +23,24 @@ module Riemann
 
       def parse(text)
         data = {}
+        line_continuation = nil
 
         text.each_line do |line|
           line.chomp!
 
-          next unless line =~ /\A  ([^:]+):[[:blank:]]+(.*)/
+          if line =~ /\A  ([^:]+):[[:blank:]]+(.*)/
+            key = Regexp.last_match(1)
+            raw_value = Regexp.last_match(2)
 
-          key = Regexp.last_match(1)
-          raw_value = Regexp.last_match(2)
+            data[key] = raw_value
+          elsif line_continuation
+            key = line_continuation
+            data[key] += ".#{line}"
+          else
+            next
+          end
 
-          data[key] = raw_value
+          line_continuation = (key if line.length == 998)
         end
 
         return nil unless valid?(data)
