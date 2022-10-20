@@ -1,5 +1,9 @@
 # riemann-bacula
 
+[![CI](https://github.com/opus-codium/riemann-bacula/actions/workflows/ci.yml/badge.svg)](https://github.com/opus-codium/riemann-bacula/actions/workflows/ci.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d4206bbc680dc822194b/maintainability)](https://codeclimate.com/github/opus-codium/riemann-bacula/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d4206bbc680dc822194b/test_coverage)](https://codeclimate.com/github/opus-codium/riemann-bacula/test_coverage)
+
 Submits bacula information to riemann.
 
 ## Get started

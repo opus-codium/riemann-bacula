@@ -16,4 +16,5 @@ GitHubChangelogGenerator::RakeTask.new :changelog do |config|
   config.project = 'riemann-bacula'
   config.exclude_labels = ['skip-changelog']
   config.future_release = Riemann::Tools::Bacula::VERSION
+  config.since_tag = 'v1.0.0'
 end
