@@ -199,6 +199,8 @@ module Riemann
                           'critical'
                         end
         event[:description] = data['Termination']
+        event[:job_name] = data['Job Name']
+        event[:backup_level] = data['Backup Level']
         report(event)
 
         return unless options[:details]
@@ -218,6 +220,8 @@ module Riemann
           event = {}
           event[:service] = "bacula backup #{data['Job Name']} #{data['Backup Level'].downcase} #{metric.downcase}"
           event[:metric] = data[metric]
+          event[:job_name] = data['Job Name']
+          event[:backup_level] = data['Backup Level']
           report(event)
         end
       end
