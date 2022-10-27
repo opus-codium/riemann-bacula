@@ -1,8 +1,16 @@
 # Changelog
 
-## [1.1.0](https://github.com/opus-codium/riemann-bacula/tree/1.1.0) (2022-10-20)
+## [v1.2.0](https://github.com/opus-codium/riemann-bacula/tree/v1.2.0) (2022-10-27)
 
-[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.0.0...1.1.0)
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.1.0...v1.2.0)
+
+**Implemented enhancements:**
+
+- Embed more metadata in events [\#5](https://github.com/opus-codium/riemann-bacula/pull/5) ([smortex](https://github.com/smortex))
+
+## [v1.1.0](https://github.com/opus-codium/riemann-bacula/tree/v1.1.0) (2022-10-20)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.0.0...v1.1.0)
 
 **Implemented enhancements:**
 
