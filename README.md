@@ -17,7 +17,7 @@ In your Bacula Director configuration, add a Message resource like this (the pro
 ```
 Messages {
   Name = Standard
-  MailCommand = "riemann-bacula"
+  MailCommand = "riemann-bacula --client \"%h\" --job-name \"%n\" --backup-level \"%l\" --status \"%e\" --bytes \"%b\" --files \"%F\""
   Mail = sysadmin@example.com = all, !skipped
 }
 ```

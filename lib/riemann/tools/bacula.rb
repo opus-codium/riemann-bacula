@@ -9,16 +9,57 @@ module Riemann
     class Bacula
       include Riemann::Tools
 
-      opt :details, 'Send detailed metrics beyond overall status', default: true
+      opt :client,       'File daemon (%h)',     short: :none
+      opt :job_name,     'Job name (%n)',        short: :none
+      opt :backup_level, 'Job Level (%l)',       short: :none
+      opt :status,       'Job Exit Status (%e)', short: :none
+
+      opt :bytes, 'Job Bytes (%b)', short: :none, type: :integer
+      opt :files, 'Job Files (%F)', short: :none, type: :integer
+
+      opt :details, 'Send detailed metrics beyond overall status', short: :none, default: true
 
       def self.process_stdin
         new.process_stdin
       end
 
       def run
-        options
+        %i[client job_name backup_level status].each do |name|
+          raise("Parameter #{name} is required") unless opts[name]
+        end
+
         data = parse($stdin.read)
-        send_events(data) if data
+
+        report({
+                 host: opts[:client],
+                 service: "bacula backup #{opts[:job_name]}",
+                 state: bacula_backup_state,
+                 job_name: opts[:job_name],
+                 backup_level: opts[:backup_level],
+                 description: data['Termination'],
+               })
+
+        %i[bytes files].each do |metric|
+          next unless opts[metric]
+
+          report({
+                   host: opts[:client],
+                   service: "bacula backup #{opts[:job_name]} #{opts[:backup_level].downcase} #{metric}",
+                   metric: opts[metric],
+                   job_name: opts[:job_name],
+                   backup_level: opts[:backup_level],
+                 })
+        end
+
+        send_details(data) if options[:details]
+      end
+
+      def bacula_backup_state
+        case opts[:status]
+        when 'OK' then 'ok'
+        else
+          'critical'
+        end
       end
 
       def parse(text)
@@ -43,19 +84,14 @@ module Riemann
           line_continuation = (key if line.length == 998)
         end
 
-        return nil unless valid?(data)
-
         enhance(data)
       end
 
-      def valid?(data)
-        %w[
-          Job
-          Termination
-        ].all? { |key| data.key?(key) }
-      end
-
       def enhance(data)
+        # If the message on stdin was trucated, the last item might not make
+        # sense.
+        data.delete(data.keys.last) if data.keys.last != 'Termination'
+
         {
           parse_size: [
             'FD Bytes Written',
@@ -103,7 +139,6 @@ module Riemann
 
         extract_client_info(data)
         extract_backup_level_info(data)
-        extract_job_name(data)
 
         data
       end
@@ -124,10 +159,6 @@ module Riemann
 
         data['Client'] = Regexp.last_match(1)
         data['Client Version'] = Regexp.last_match(2)
-      end
-
-      def extract_job_name(data)
-        data['Job Name'] = data['Job'].sub(/\.\d{4}-\d{2}-\d{2}_\d{2}\.\d{2}\.\d{2}_\d{2}\z/, '')
       end
 
       def extract_source(item, data)
@@ -189,22 +220,7 @@ module Riemann
         value.split('|')
       end
 
-      def send_events(data)
-        event = {}
-        event[:service] = "bacula backup #{data['Job Name']}"
-        event[:state] = case data['Termination']
-                        when /\A(Backup|Restore) OK\z/ then 'ok'
-                        when 'Backup OK -- with warnings' then 'warning'
-                        else
-                          'critical'
-                        end
-        event[:description] = data['Termination']
-        event[:job_name] = data['Job Name']
-        event[:backup_level] = data['Backup Level']
-        report(event)
-
-        return unless options[:details]
-
+      def send_details(data)
         [
           'Elapsed time',
           'FD Files Written',
@@ -217,12 +233,15 @@ module Riemann
           'Comm Line Compression',
           'Non-fatal FD errors',
         ].each do |metric|
-          event = {}
-          event[:service] = "bacula backup #{data['Job Name']} #{data['Backup Level'].downcase} #{metric.downcase}"
-          event[:metric] = data[metric]
-          event[:job_name] = data['Job Name']
-          event[:backup_level] = data['Backup Level']
-          report(event)
+          next unless data[metric]
+
+          report({
+                   host: opts[:client],
+                   service: "bacula backup #{opts[:job_name]} #{opts[:backup_level].downcase} #{metric.downcase}",
+                   metric: data[metric],
+                   job_name: opts[:job_name],
+                   backup_level: opts[:backup_level],
+                 })
         end
       end
     end

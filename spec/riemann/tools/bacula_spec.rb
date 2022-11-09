@@ -46,7 +46,6 @@ RSpec.describe Riemann::Tools::Bacula do
       'Storage Source'             => 'Pool',
       'Client Version'             => '9.0.6',
       'FileSet time'               => '2022-09-09 02:05:00',
-      'Job Name'                   => 'rdc10235a',
     }
   end
 
@@ -106,7 +105,6 @@ RSpec.describe Riemann::Tools::Bacula do
           'Storage Source'        => 'Pool',
           'Client Version'        => '9.6.7',
           'FileSet time'          => '2019-07-27 20:00:00',
-          'Job Name'              => 'nextcloud',
         }
       end
 
@@ -122,7 +120,6 @@ RSpec.describe Riemann::Tools::Bacula do
           'Build OS'              => 'x86_64-pc-linux-gnu debian buster/sid',
           'JobId'                 => 4220,
           'Job'                   => 'RestoreFiles.2020-09-01_19.46.41_50',
-          'Job Name'              => 'RestoreFiles',
           'Restore Client'        => 'rdc085e07.example.com-fd',
           'Where'                 => '/tmp/bacula-restores',
           'Replace'               => 'Always',
@@ -226,11 +223,19 @@ RSpec.describe Riemann::Tools::Bacula do
           'Storage Source'        => 'Pool',
           'Client Version'        => '9.6.7',
           'FileSet time'          => '2019-07-27 20:00:00',
-          'Job Name'              => 'nextcloud',
         }
       end
 
       it { is_expected.to eq(parsed_data) }
+    end
+
+    context 'with example-5' do
+      subject { described_class.new.parse(text) }
+
+      let(:text) { File.read('spec/fixtures/example-5') }
+
+      it { is_expected.to have_key('Accurate') }
+      it { is_expected.not_to have_key('Volume name(s)') }
     end
   end
 
@@ -261,22 +266,6 @@ RSpec.describe Riemann::Tools::Bacula do
 
     {
       { 'Client' => '"fd.example.com-fd" 9.0.6 (20Nov17) x86_64-pc-linux-gnu,ubuntu,18.04' } => { 'Client' => 'fd.example.com-fd', 'Client Version' => '9.0.6' },
-    }.each do |info, res|
-      context "when given #{info.inspect}" do
-        let(:data) { info }
-
-        it { is_expected.to eq(res) }
-      end
-    end
-  end
-
-  describe '#extract_job_name' do
-    subject { data }
-
-    before { described_class.new.extract_job_name(data) }
-
-    {
-      { 'Job' => 'nextcloud.2020-07-01_20.05.57_20' } => { 'Job' => 'nextcloud.2020-07-01_20.05.57_20', 'Job Name' => 'nextcloud' },
     }.each do |info, res|
       context "when given #{info.inspect}" do
         let(:data) { info }
@@ -424,25 +413,45 @@ RSpec.describe Riemann::Tools::Bacula do
     end
   end
 
-  describe '#send_events' do
+  describe '#run' do
     subject(:instance) { described_class.new }
 
     before do
       allow(instance).to receive(:report)
-      instance.send_events(parsed_data)
+      instance.options[:client] = 'example.com'
+      instance.options[:job_name] = 'rdc10235a'
+      instance.options[:backup_level] = 'Full'
+      instance.options[:status] = 'OK'
+      instance.options[:bytes] = 13_984
+      instance.options[:files] = 42
+      allow($stdin).to receive(:read).and_return('')
+      instance.run
     end
 
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a', state: 'ok', description: 'Backup OK', job_name: 'rdc10235a', backup_level: 'Full') }
+    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a', state: 'ok', job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a full bytes', metric: 13_984, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a full files', metric: 42, job_name: 'rdc10235a', backup_level: 'Full')) }
+  end
 
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full elapsed time', metric: 4, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full fd files written', metric: 1, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd files written', metric: 1, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full fd bytes written', metric: 6728, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd bytes written', metric: 6852, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full sd errors', metric: 0, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full rate', metric: 1.7, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full software compression', metric: 0.649, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full comm line compression', metric: 0, job_name: 'rdc10235a', backup_level: 'Full') }
-    it { is_expected.to have_received(:report).with(service: 'bacula backup rdc10235a full non-fatal fd errors', metric: 0, job_name: 'rdc10235a', backup_level: 'Full') }
+  describe '#send_details' do
+    subject(:instance) { described_class.new }
+
+    before do
+      allow(instance).to receive(:report)
+      instance.options[:job_name] = 'rdc10235a'
+      instance.options[:backup_level] = 'Full'
+      instance.send_details(parsed_data)
+    end
+
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full elapsed time', metric: 4, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full fd files written', metric: 1, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full sd files written', metric: 1, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full fd bytes written', metric: 6728, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full sd bytes written', metric: 6852, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full sd errors', metric: 0, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full rate', metric: 1.7, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full software compression', metric: 0.649, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full comm line compression', metric: 0, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full non-fatal fd errors', metric: 0, job_name: 'rdc10235a', backup_level: 'Full')) }
   end
 end

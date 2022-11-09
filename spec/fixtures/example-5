@@ -1,0 +1,39 @@
+[...]
+2022-11-06 08:35:57rdc7fe7cc.example.com-dir JobId 16523: There are no more Jobs associated with Volume "CustomersData-5037". Marking it purged.
+2022-11-06 08:35:57rdc7fe7cc.example.com-dir JobId 16523: All records pruned from Volume "CustomersData-5037"; marking it "Purged"
+2022-11-06 08:35:57rdc7fe7cc.example.com-dir JobId 16523: Recycled volume "CustomersData-5037"
+2022-11-06 08:35:57rdc7fe7cc.example.com-sd JobId 16523: Recycled volume "CustomersData-5037" on File device "rdc7fe7cc.example.com-device" (/home/bacula), all previous data lost.
+2022-11-06 08:35:57rdc7fe7cc.example.com-sd JobId 16523: New volume "CustomersData-5037" mounted on device "rdc7fe7cc.example.com-device" (/home/bacula) at 06-Nov-2022 08:35.
+2022-11-06 08:36:03rdc7fe7cc.example.com-sd JobId 16523: Elapsed time=06:29:39, Transfer rate=3.275 M Bytes/second
+2022-11-06 08:36:03rdc7fe7cc.example.com-sd JobId 16523: Sending spooled attrs to the Director. Despooling 293,124,753 bytes ...
+2022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: Bacula rdc7fe7cc.example.com-dir 9.6.7 (10Dec20):
+  Build OS:               x86_64-pc-linux-gnu debian bullseye/sid
+  JobId:                  16523
+  Job:                    redactedredactedre.2022-11-06_02.05.00_26
+  Backup Level:           Full
+  Client:                 "redactedredactedredacted" 9.4.2 (04Feb19) x86_64-pc-linux-gnu,ubuntu,20.04
+  FileSet:                "redactedredactedre" 2022-03-15 16:23:55
+  Pool:                   "CustomersData" (From Job resource)
+  Catalog:                "MyCatalog" (From Client resource)
+  Storage:                "rdc7fe7cc.example.com-sd" (From Pool resource)
+  Scheduled time:         06-Nov-2022 02:05:00
+  Start time:             06-Nov-2022 02:05:11
+  End time:               06-Nov-2022 08:36:14
+  Elapsed time:           6 hours 31 mins 3 secs
+  Priority:               10
+  FD Files Written:       1,100,489
+  SD Files Written:       1,100,489
+  FD Bytes Written:       76,391,379,822 (76.39 GB)
+  SD Bytes Written:       76,574,746,883 (76.57 GB)
+  Rate:                   3255.8 KB/s
+  Software Compression:   6.0% 1.1:1
+  Comm Line Compression:  None
+  Snapshot/VSS:           no
+  Encryption:             no
+  Accurate:               no
+  Volume name(s):         CustomersData-4578|CustomersData-4583|CustomersData-12266|CustomersData-12267|CustomersData-12268|CustomersData-12269|CustomersData-12270|CustomersData-12271|CustomersData-12272|CustomersData-12273|CustomersData-12274|CustomersData-10271|CustomersData-4586|CustomersData-4587|CustomersData-4588|CustomersData-4589|CustomersData-4590|CustomersData-4591|CustomersData-4592|CustomersData-4593|CustomersData-4594|CustomersData-4763|CustomersData-4764|CustomersData-4765|CustomersData-4766|CustomersData-4767|CustomersData-4768|CustomersData-4769|CustomersData-4770|CustomersData-4771|CustomersData-4772|CustomersData-4773|CustomersData-4774|CustomersData-4775|CustomersData-4776|CustomersData-4777|CustomersData-4778|CustomersData-4779|CustomersData-4780|CustomersData-4788|CustomersData-4789|CustomersData-4790|CustomersData-4791|CustomersData-4792|CustomersData-4793|CustomersData-4794|CustomersData-4795|CustomersData-4796|CustomersData-4797|CustomersData-4798|CustomersData-4799|CustomersData-4800|CustomersData-4801|CustomersData-4802|CustomersData-4803|CustomersData-4804|CustomersData-4805|CustomersData-4806|CustomersData-4807|CustomersData-4808|CustomersData-4809|CustomersData-4810|CustomersData-4811|CustomersData-4812|CustomersData-4813|CustomersData-4814|CustomersData-4815|CustomersData-4816|CustomersData-4817|CustomersData-4818|CustomersData-4819|CustomersData-4820|CustomersData-4821|CustomersData-4822|CustomersData-4823|CustomersData-4824|CustomersData-4825|CustomersData-4826|CustomersData-4827|CustomersData-4828|CustomersData-4829|CustomersData-4830|CustomersData-4831|CustomersData-4832|CustomersData-4833|CustomersData-4834|CustomersData-4835|CustomersData-4836|CustomersData-4837|CustomersData-4838|CustomersData-4839|CustomersData-4840|CustomersData-4841|CustomersData-4842|CustomersData-4843|CustomersData-4844|CustomersData-4845|CustomersData-4846|CustomersData-4847|CustomersData-4848|CustomersData-4849|CustomersData-4850|CustomersData-4851|CustomersData-4852|CustomersData-4853|CustomersData-4854|CustomersData-4855|CustomersData-4856|CustomersData-4857|CustomersData-4858|CustomersData-4859|CustomersData-4860|CustomersData-4861|CustomersData-4862|CustomersData-4863|CustomersData-4864|CustomersData-4865|CustomersData-4866|CustomersData-4867|CustomersData-4868|CustomersData-4869|CustomersData-4870|CustomersData-4871|CustomersData-4872|CustomersData-4873|CustomersData-4874|CustomersData-4875|CustomersData-4876|CustomersData-4877|CustomersData-4878|CustomersData-4881|CustomersData-4882|CustomersData-4883|CustomersData-4884|CustomersData-4885|CustomersData-4886|CustomersData-4887|CustomersData-4888|CustomersData-4889|CustomersData-4890|CustomersData-4891|CustomersData-4892|CustomersData-4893|CustomersData-4894|CustomersData-4895|CustomersData-4896|CustomersData-4897|CustomersData-4898|CustomersData-4899|CustomersData-4900|CustomersData-4901|CustomersData-4902|CustomersData-4903|CustomersData-4904|CustomersData-4905|CustomersData-4906|CustomersData-4907|CustomersData-4908|CustomersData-4909|CustomersData-4910|CustomersData-4911|CustomersData-4912|CustomersData-4913|CustomersData-4914|CustomersData-4915|CustomersData-4916|CustomersData-4917|CustomersData-4918|CustomersData-4919|CustomersData-4920|CustomersData-4921|CustomersData-4922|CustomersData-4923|CustomersData-4924|CustomersData-4925|CustomersData-4926|CustomersData-4927|CustomersData-4928|CustomersData-4929|CustomersData-4930|CustomersData-4931|CustomersData-4932|CustomersData-4933|CustomersData-4934|CustomersData-4935|CustomersData-4936|CustomersData-4937|CustomersData-4938|CustomersData-4939|CustomersData-4940|CustomersData-4941|CustomersData-4942|CustomersData-4943|CustomersData-4944|CustomersData-4945|CustomersData-42022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: Begin pruning Jobs older than 6 months .
+2022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: No Jobs found to prune.
+2022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: Begin pruning Files.
+2022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: Pruned Files from 1 Jobs for client redactedredactedredacted from catalog.
+2022-11-06 08:36:14rdc7fe7cc.example.com-dir JobId 16523: End auto prune.
+
