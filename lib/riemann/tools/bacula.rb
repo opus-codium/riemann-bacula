@@ -9,10 +9,10 @@ module Riemann
     class Bacula
       include Riemann::Tools
 
-      opt :client,       'File daemon (%h)',     short: :none
-      opt :job_name,     'Job name (%n)',        short: :none
-      opt :backup_level, 'Job Level (%l)',       short: :none
-      opt :status,       'Job Exit Status (%e)', short: :none
+      opt :client,       'File daemon (%h)',     short: :none, type: :string
+      opt :job_name,     'Job name (%n)',        short: :none, type: :string
+      opt :backup_level, 'Job Level (%l)',       short: :none, type: :string
+      opt :status,       'Job Exit Status (%e)', short: :none, type: :string
 
       opt :bytes, 'Job Bytes (%b)', short: :none, type: :integer
       opt :files, 'Job Files (%F)', short: :none, type: :integer
