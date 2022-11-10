@@ -418,7 +418,6 @@ RSpec.describe Riemann::Tools::Bacula do
 
     before do
       allow(instance).to receive(:report)
-      instance.options[:client] = 'example.com'
       instance.options[:job_name] = 'rdc10235a'
       instance.options[:backup_level] = 'Full'
       instance.options[:status] = 'OK'
@@ -428,9 +427,9 @@ RSpec.describe Riemann::Tools::Bacula do
       instance.run
     end
 
-    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a', state: 'ok', job_name: 'rdc10235a', backup_level: 'Full')) }
-    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a full bytes', metric: 13_984, job_name: 'rdc10235a', backup_level: 'Full')) }
-    it { is_expected.to have_received(:report).with(hash_including(host: 'example.com', service: 'bacula backup rdc10235a full files', metric: 42, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a', state: 'ok', job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full bytes', metric: 13_984, job_name: 'rdc10235a', backup_level: 'Full')) }
+    it { is_expected.to have_received(:report).with(hash_including(service: 'bacula backup rdc10235a full files', metric: 42, job_name: 'rdc10235a', backup_level: 'Full')) }
   end
 
   describe '#send_details' do

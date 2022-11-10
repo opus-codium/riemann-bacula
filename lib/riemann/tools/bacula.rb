@@ -9,7 +9,6 @@ module Riemann
     class Bacula
       include Riemann::Tools
 
-      opt :client,       'File daemon (%h)',     short: :none, type: :string
       opt :job_name,     'Job name (%n)',        short: :none, type: :string
       opt :backup_level, 'Job Level (%l)',       short: :none, type: :string
       opt :status,       'Job Exit Status (%e)', short: :none, type: :string
@@ -24,14 +23,13 @@ module Riemann
       end
 
       def run
-        %i[client job_name backup_level status].each do |name|
+        %i[job_name backup_level status].each do |name|
           raise("Parameter #{name} is required") unless opts[name]
         end
 
         data = parse($stdin.read)
 
         report({
-                 host: opts[:client],
                  service: "bacula backup #{opts[:job_name]}",
                  state: bacula_backup_state,
                  job_name: opts[:job_name],
@@ -43,7 +41,6 @@ module Riemann
           next unless opts[metric]
 
           report({
-                   host: opts[:client],
                    service: "bacula backup #{opts[:job_name]} #{opts[:backup_level].downcase} #{metric}",
                    metric: opts[metric],
                    job_name: opts[:job_name],
@@ -236,7 +233,6 @@ module Riemann
           next unless data[metric]
 
           report({
-                   host: opts[:client],
                    service: "bacula backup #{opts[:job_name]} #{opts[:backup_level].downcase} #{metric.downcase}",
                    metric: data[metric],
                    job_name: opts[:job_name],
