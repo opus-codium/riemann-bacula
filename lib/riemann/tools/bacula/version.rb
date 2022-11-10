@@ -3,7 +3,7 @@
 module Riemann
   module Tools # :nodoc:
     class Bacula
-      VERSION = '1.2.0'
+      VERSION = '2.0.0'
     end
   end
 end
