@@ -1,5 +1,17 @@
 # Changelog
 
+## [v2.0.0](https://github.com/opus-codium/riemann-bacula/tree/v2.0.0) (2022-11-14)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.2.0...v2.0.0)
+
+**Breaking changes:**
+
+- Add parameters and make them mandatory [\#7](https://github.com/opus-codium/riemann-bacula/pull/7) ([smortex](https://github.com/smortex))
+
+**Merged pull requests:**
+
+- Fix how we set the host of bacula events [\#8](https://github.com/opus-codium/riemann-bacula/pull/8) ([smortex](https://github.com/smortex))
+
 ## [v1.2.0](https://github.com/opus-codium/riemann-bacula/tree/v1.2.0) (2022-10-27)
 
 [Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.1.0...v1.2.0)
