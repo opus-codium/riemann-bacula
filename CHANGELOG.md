@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.0.1](https://github.com/opus-codium/riemann-bacula/tree/v2.0.1) (2022-11-18)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.0...v2.0.1)
+
+**Fixed bugs:**
+
+- Fix description of truncated status events [\#10](https://github.com/opus-codium/riemann-bacula/pull/10) ([smortex](https://github.com/smortex))
+
 ## [v2.0.0](https://github.com/opus-codium/riemann-bacula/tree/v2.0.0) (2022-11-14)
 
 [Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v1.2.0...v2.0.0)
