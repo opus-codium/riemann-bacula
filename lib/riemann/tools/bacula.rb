@@ -34,7 +34,7 @@ module Riemann
                  state: bacula_backup_state,
                  job_name: opts[:job_name],
                  backup_level: opts[:backup_level],
-                 description: data['Termination'],
+                 description: "#{opts[:status]} (#{data['Termination']})",
                })
 
         %i[bytes files].each do |metric|
