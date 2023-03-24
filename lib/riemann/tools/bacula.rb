@@ -54,6 +54,7 @@ module Riemann
       def bacula_backup_state
         case opts[:status]
         when 'OK' then 'ok'
+        when 'OK -- with warnings' then 'warning'
         else
           'critical'
         end
