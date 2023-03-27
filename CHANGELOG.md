@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.0.2](https://github.com/opus-codium/riemann-bacula/tree/v2.0.2) (2023-03-27)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.1...v2.0.2)
+
+**Fixed bugs:**
+
+- Fix warning detection [\#12](https://github.com/opus-codium/riemann-bacula/pull/12) ([smortex](https://github.com/smortex))
+
 ## [v2.0.1](https://github.com/opus-codium/riemann-bacula/tree/v2.0.1) (2022-11-18)
 
 [Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.0...v2.0.1)
