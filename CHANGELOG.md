@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.0](https://github.com/opus-codium/riemann-bacula/tree/v3.0.0) (2025-01-06)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.2...v3.0.0)
+
+**Breaking changes:**
+
+- Do not update canceled backups state [\#14](https://github.com/opus-codium/riemann-bacula/pull/14) ([smortex](https://github.com/smortex))
+
 ## [v2.0.2](https://github.com/opus-codium/riemann-bacula/tree/v2.0.2) (2023-03-27)
 
 [Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.1...v2.0.2)
