@@ -29,13 +29,15 @@ module Riemann
 
         data = parse($stdin.read)
 
-        report({
-                 service: "bacula backup #{opts[:job_name]}",
-                 state: bacula_backup_state,
-                 job_name: opts[:job_name],
-                 backup_level: opts[:backup_level],
-                 description: "#{opts[:status]} (#{data['Termination']})",
-               })
+        if opts[:status] != 'Canceled'
+          report({
+                   service: "bacula backup #{opts[:job_name]}",
+                   state: bacula_backup_state,
+                   job_name: opts[:job_name],
+                   backup_level: opts[:backup_level],
+                   description: "#{opts[:status]} (#{data['Termination']})",
+                 })
+        end
 
         %i[bytes files].each do |metric|
           next unless opts[metric]
