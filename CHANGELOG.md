@@ -1,5 +1,13 @@
 # Changelog
 
+## [v4.0.0](https://github.com/opus-codium/riemann-bacula/tree/v4.0.0) (2026-05-29)
+
+[Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v3.0.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop Ruby 2.6; Allow riemann-tools 2.0.0 [\#16](https://github.com/opus-codium/riemann-bacula/pull/16) ([smortex](https://github.com/smortex))
+
 ## [v3.0.0](https://github.com/opus-codium/riemann-bacula/tree/v3.0.0) (2025-01-06)
 
 [Full Changelog](https://github.com/opus-codium/riemann-bacula/compare/v2.0.2...v3.0.0)
